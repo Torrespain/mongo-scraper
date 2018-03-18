@@ -16,7 +16,7 @@ var ArticleSchema = new Schema({
     type: String,
     required: true
   },
-
+  // `body` is not required and of type String
   body: {
     type: String,
     required: false

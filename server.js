@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var exphbs = require('express-handlebars');
 
 var axios = require("axios");
 var cheerio = require("cheerio");
@@ -11,9 +12,16 @@ var db = require("./models");
 
 var PORT = 3000;
 
-
 // Initialize Express
 var app = express();
+
+//For Handlebars
+app.engine('handlebars', exphbs({defaultLayout: 'main'}));
+app.set('view engine', 'handlebars');
+ 
+app.get('/', function (req, res) {
+    res.render('index');
+});
 
 // Use morgan logger for logging requests
 app.use(logger("dev"));
