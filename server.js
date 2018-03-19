@@ -51,8 +51,8 @@ app.get("/scrape", function(req, res) {
 		 $("div.pntc-content").each(function(i, element){
 		 	//getting the tittle and the link
 
-		 	var title = $(this).find(".pntc-txt").find("hgroup").find("h2.title").text();
-		 	var link = $(this).find(".pntc-txt").find("hgroup").find("h2.title").find("a").attr("href");
+		 	var title = $(this).find(".pntc-txt").find("hgroup").find(".title").text();
+		 	var link = $(this).find(".pntc-txt").find("hgroup").find(".title").find("a").attr("href");
 		 	var body = $(this).find(".pntc-txt").find("p.txt").text();
 
 		 	var result = {title, link, body};
@@ -63,13 +63,13 @@ app.get("/scrape", function(req, res) {
 				.create(result)
 				.then(function(dbArticle){
 				//save the Article, send a message to the client
-				alert("Hello! I am an alert box!!"); //not working
-				 //res.send("Scrape Complete");
+				console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+				 res.send("Scrape Complete");
 				})
-				// .catch(function(err){
-				// 	// If an error occurred, send it to the client
-				// 	res.json(err);
-				// });
+				.catch(function(err){
+					// If an error occurred, send it to the client
+					res.json(err);
+				 });
 		 });
 	});
 });
