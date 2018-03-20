@@ -23,6 +23,10 @@ app.get('/', function (req, res) {
     res.render('index');
 });
 
+app.get('/savedArticles', function (req, res) {
+    res.render('savedArticles');
+});
+
 // Use morgan logger for logging requests
 app.use(logger("dev"));
 
@@ -78,7 +82,7 @@ app.get("/scrape", function(req, res) {
 app.get("/articles", function(req, res) {
   // Grab every document in the Articles collection
   db.Article
-    .find({}).limit( 10 )
+    .find({}).limit( 15 )
     .then(function(dbArticle) {
       // If we were able to successfully find Articles, send them back to the client
       res.json(dbArticle);
@@ -126,21 +130,44 @@ app.post("/articles/:id", function(req, res){
 
 //saving a specific article into the DB
 
-app.get("/savedArticles", function(req, res){
-	var savedId = req.query.id;
+app.post("/savedArticles", function(req, res){
+	var savedId = req.body.id;
 	var savedArticle = {};
-			
+	console.log(savedId)
 	// Grab the article with the matching id
     db.Article
     	.findOneAndUpdate({_id: savedId},{"saved": true})
       	.then(function(dbArticle) {
      	// If we were able to successfully find Articles, send them back to the client
-        	res.json(dbArticle);
+        	console.log("updated")
+          res.json(dbArticle);
+        	
       	})
       	.catch(function(err) {
       	// If an error occurred, send it to the client
         res.json(err);
      })
+});
+
+
+
+// Route for getting all Saved Articles from the db
+app.get("/saved", function(req, res){
+  console.log("before db.article")
+  // Grab every document in the Articles collection
+  db.Article
+    .find({saved: true}).sort({createdAt: -1})
+    .then(function(dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+      console.log("before the render", dbArticle)
+      res.render("savedArticles", {
+        'articles': dbArticle
+      } );
+    })
+    .catch(function(err) {
+      // If an error occurred, send it to the client
+      res.json(err);
+    });
 });
 
 

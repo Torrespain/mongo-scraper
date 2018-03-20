@@ -1,0 +1,43 @@
+<nav class="navbar navbar-inverse">
+  <ul class="nav navbar-nav">
+    <li><a href="/">Home</a></li>
+   
+  </ul>
+</nav>
+
+<div class="container">
+	<div id="wrapper">
+      <h1>Article Scraper</h1>
+      <h2><i>Your saved articles</i></h2>
+      <div id="articles">
+      	{{#each articles}}
+      		<h3>{{ title }}</h3>
+      		<h4>{{ body }}</h4>
+      		<h4>{{ link }}</h4>
+      	{{/each}}
+      </div>
+      <div id="notes"></div>
+	</div>
+</div>
+
+  <!-- Modal -->
+	 <div class="modal fade" id="myModal" role="dialog">
+	    <div class="modal-dialog">
+	    
+	      <!-- Modal content-->
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal">&times;</button>
+	          <h2 class="modal-title"></h2>
+	        </div>
+	        <div id="previousNotes">
+	        </div>
+	        <div id="newNote">
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	      
+	    </div>
+	 </div>
