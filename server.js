@@ -63,7 +63,7 @@ app.get("/scrape", function(req, res) {
 				.create(result)
 				.then(function(dbArticle){
 				//save the Article, send a message to the client
-				console.log("////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////")
+				
 				 res.send("Scrape Complete");
 				})
 				.catch(function(err){
@@ -123,6 +123,26 @@ app.post("/articles/:id", function(req, res){
 			res.json(err);
 		});
 });
+
+//saving a specific article into the DB
+
+app.get("/savedArticles", function(req, res){
+	var savedId = req.query.id;
+	var savedArticle = {};
+			
+	// Grab the article with the matching id
+    db.Article
+    	.findOneAndUpdate({_id: savedId},{"saved": true})
+      	.then(function(dbArticle) {
+     	// If we were able to successfully find Articles, send them back to the client
+        	res.json(dbArticle);
+      	})
+      	.catch(function(err) {
+      	// If an error occurred, send it to the client
+        res.json(err);
+     })
+});
+
 
 app.listen(PORT, function() {
   console.log("App running on port " + PORT + "!");

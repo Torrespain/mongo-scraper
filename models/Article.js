@@ -19,7 +19,7 @@ var ArticleSchema = new Schema({
   // `body` is not required and of type String
   body: {
     type: String,
-    required: false
+    required: true
   },
   
   saved: {
