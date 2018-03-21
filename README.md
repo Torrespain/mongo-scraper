@@ -13,9 +13,9 @@ In addition, comments can be asociated (or removed) to the saved articles.
 
 <h3>Screenshots</h3>
 
-<img src=/screenshots/Capture1.jpg>
+<img src="screenshots/Capture1.JPG">
 
-<img src=/screenshots/Capture2.jpg>
+<img src="screenshots/Capture2.JPG">
 
 <h3>Link to the app in Heroku</h3>
 https://gentle-retreat-14690.herokuapp.com/
