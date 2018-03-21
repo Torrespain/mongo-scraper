@@ -18,6 +18,7 @@
       		<h4>{{ body }}</h4>
       		<a href="{{ link }}"><button class="btn btn-primary" target="_blank">See full article</button></a>
       		<button class="btn btn-primary articleNotes" data-id="{{_id}}">Add a note</button>
+          <button class="btn btn-danger removeArticle" data-id="{{_id}}">Remove article</button>
       	{{/each}}
       </div>
       <div id="notes"></div>

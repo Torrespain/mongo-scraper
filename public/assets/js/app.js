@@ -37,7 +37,7 @@ $(document).on("click", "#saveArticle", function() {
 			id: thisId
 		}
 	});
-})
+});
 
 $(document).on("click", ".articleNotes", function() {
 	console.log("clicking notes")
@@ -53,7 +53,23 @@ $(document).on("click", ".articleNotes", function() {
 
 	});
 
-})
+});
+
+$(document).on("click", ".removeArticle", function() {
+	var thisId = $(this).attr("data-id");
+	alert("Article removed!");
+	console.log(thisId);
+	//grabbing the id from the button, making an ajax call to access the db from the server using the saved id
+	$.ajax({
+		method: "POST",
+		url: "/deleteArticle",
+		data: {
+			id: thisId
+		}
+	});
+});
+
+
 
 // $(document).on("click", "#savedArticles", function() {
 // 	var thisId = $(this).attr("data-id");

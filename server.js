@@ -166,7 +166,26 @@ app.post("/savedArticles", function(req, res){
      })
 });
 
+//deleting a specific article from the DB
 
+app.post("/deleteArticle", function(req, res){
+  var deleteId = req.body.id;
+  var deleteArticle = {};
+  console.log(deleteId)
+  // Grab the article with the matching id
+    db.Article
+      .findOneAndUpdate({_id: deleteId},{"saved": false})
+        .then(function(dbArticle) {
+      // If we were able to successfully find Articles, send them back to the client
+          console.log("deleted!")
+          res.json(dbArticle);
+          // location.reload();  it is not reloading..
+        })
+        .catch(function(err) {
+        // If an error occurred, send it to the client
+        res.json(err);
+     }) 
+});
 
 // Route for getting all Saved Articles from the db
 app.get("/saved", function(req, res){
