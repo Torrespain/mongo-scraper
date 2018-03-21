@@ -39,6 +39,22 @@ $(document).on("click", "#saveArticle", function() {
 	});
 })
 
+$(document).on("click", ".articleNotes", function() {
+	console.log("clicking notes")
+	var thisId = $(this).attr("data-id");
+	console.log(thisId);
+
+	$.ajax({
+		method: "POST",
+		url: "/articles" + thisId,
+		data: {
+			title: $("#")
+		}
+
+	});
+
+})
+
 // $(document).on("click", "#savedArticles", function() {
 // 	var thisId = $(this).attr("data-id");
 // 	console.log(thisId);
@@ -63,17 +79,3 @@ $(document).on("click", "#saveArticle", function() {
 
 
 
-// $(document).on("click", "#savenote", function() {
-// 	var thisId = $(this).attr("data-id");
-// 	console.log(thisId);
-
-// 	$.ajax({
-// 		method: "POST",
-// 		url: "/articles" + thisId,
-// 		data: {
-// 			title: $("#")
-// 		}
-
-// 	});
-
-// })
