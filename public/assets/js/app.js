@@ -12,13 +12,17 @@ $(document).on("click", "#loadArticles", function(event){
  			// For each one
  			for (var i = 0; i < data.length; i++) {
     		// Display the apropos information on the page
-    			$("#articles").append("<div class = 'articleHolder'><p data-id='" + data[i]._id + "'>" + "<span class = 'title'>" + data[i].title + "</span><br />"  + "<span class = 'body'>" + data[i].body + "</span><br/>" + "<span class = 'link'>" + data[i].link + "</span></p>" + "<button id='saveArticle' data-id='" + data[i]._id + "'>" + "save article" + "</button>"+"</div.");
+    			$("#articles").append("<div class = 'articleHolder'><h3 class = 'title'>" + data[i].title + "</h3>"  + "<h4 class = 'body'>" + data[i].body + "</h4>" + "<a href ='" + data[i].link+"'" + "><button class='btn btn-primary' target='_blank'>See full article</button></a>" + "<button class='btn btn-primary' id='saveArticle' data-id='" + data[i]._id + "'>" + "save article" + "</button>"+"</div.");
     			articleCounter++;
  			}
  			alert(articleCounter + " new articles");
 		});
 	});
 });
+
+// <h3>{{ title }}</h3>
+//           <h4>{{ body }}</h4>
+//           <a href="{{ link }}" target="_blank">See full article</a>
 
 
 $(document).on("click", "#saveArticle", function() {

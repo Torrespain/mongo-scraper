@@ -1,21 +1,49 @@
 body { 
-  background-color: #F2F6D0 
+   background-image: url(../images/background3.jpg); 
+   background-size: cover;
 }
+
+h1{
+  margin-bottom: 20px;
+  opacity: 1;
+}
+.jumbotron{
+  text-align: center;
+  background: #e6e6e6;
+  opacity: 0.8;
+  color: black;
+  height: auto;
+}
+
 #wrapper {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
   padding-top: 5%;
 }
-#articles {
+.articleHolder, .savedArticles{
+  background: rgba(255,255,255, 0.65);
+  padding: 15px;
+  border-radius: 7px;
+  
+
+}
+#articles{
   display: inline-block;
   overflow: auto;
-  width: 60%;
+  width: 80%;
   height: 700px;
+  padding: 20px;
+}
+button{
+  margin-right: 10px;
 }
 #notes {
   float: right;
   width: 30%;
+}
+.btn{
+  padding: 5px;
 }
 textarea, input {
   display: block;
