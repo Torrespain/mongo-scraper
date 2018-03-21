@@ -40,10 +40,27 @@ app.use(express.static("public"));
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
+// mongoose.Promise = Promise;
+// mongoose.connect("mongodb://localhost/as", {
+//   // useMongoClient: true
+// });
+
+
+//conecting to Heroku
+var databaseUrl = 'mongodb://localhost/as';
+
+if (process.env.MONGODB_URI) {
+  mongoose.connect(process.env.MONGODB_URI);
+}
+else {
+  mongoose.Promise = Promise;
+  mongoose.connect(databaseUrl);
+};
+
 mongoose.Promise = Promise;
-mongoose.connect("mongodb://localhost/as", {
-  // useMongoClient: true
-});
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/as";
+mongoose.connect(MONGODB_URI);
+var database = mongoose.connection;
 
 // A GET route for scraping the website
 app.get("/scrape", function(req, res) {
