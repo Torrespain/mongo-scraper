@@ -57,7 +57,6 @@ $(document).on("click", ".articleNotes", function() {
 
 $(document).on("click", ".removeArticle", function() {
 	var thisId = $(this).attr("data-id");
-	alert("Article removed!");
 	console.log(thisId);
 	//grabbing the id from the button, making an ajax call to access the db from the server using the saved id
 	$.ajax({
@@ -66,6 +65,8 @@ $(document).on("click", ".removeArticle", function() {
 		data: {
 			id: thisId
 		}
+	}).then(function(){
+		location.reload();
 	});
 });
 
